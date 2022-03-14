@@ -24,6 +24,8 @@ class ReactThread {
     AddTask([]() { throw ReactThreadStop(); });
   }
 
+  void Join() { m_thread.join(); }
+
  private:
   void _Init() {
     m_thread = std::thread([&]() {
