@@ -10,6 +10,7 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 lib/
-dist/
-.vscode/
 build/
+CMakeLists.txt
+bin/
+.vscode/

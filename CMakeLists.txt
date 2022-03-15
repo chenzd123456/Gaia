@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.5.1)
 
 project(gaia_test)
 
-SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/dist/test)
+SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin/test)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
