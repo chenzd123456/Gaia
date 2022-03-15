@@ -1,7 +1,7 @@
 
 #include <iostream>
 
-#include "include/ReactThread.hpp"
+#include <gaia/ReactThread.hpp>
 
 int main() {
   gaia::ReactThread react;
