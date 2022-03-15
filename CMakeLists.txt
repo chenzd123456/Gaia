@@ -38,6 +38,7 @@ SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin/)
 
 add_executable(gaia_react_thread_example 
     ${CMAKE_SOURCE_DIR}/example/ReactThread/main.cpp)
-    target_link_libraries(gaia_react_thread_example pthread)
+
+target_link_libraries(gaia_react_thread_example pthread)
 
 ################################################################################
