@@ -18,7 +18,15 @@ class ReactThread {
  public:
   ReactThread() { _Init(); };
 
+  uint32_t MaxTaskCount() { return m_queue.MaxSize(); }
+
+  void MaxTaskCount(uint32_t max_count) { m_queue.MaxSize(max_count); }
+
+  uint32_t TaskCount() { return m_queue.Size(); }
+
   void AddTask(std::function<void()> task) { m_queue.Push(task); }
+
+  std::function<void()> RemoveTask() { return m_queue.Pop(); }
 
   void Stop() {
     AddTask([]() { throw ReactThreadStop(); });
@@ -37,6 +45,7 @@ class ReactThread {
         } catch (const ReactThreadStop& e) {
           break;
         } catch (const std::exception& e) {
+          // TODO
         }
       }
     });

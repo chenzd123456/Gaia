@@ -21,6 +21,21 @@ class BlockQueue {
  public:
   BlockQueue() : m_max_size(0) {}
 
+  uint32_t Size() {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    return m_queue.size();
+  }
+
+  uint32_t MaxSize() {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    return m_max_size;
+  }
+
+  void MaxSize(uint32_t max_size) {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    m_max_size = max_size;
+  }
+
   void Push(T item) {
     std::unique_lock<std::mutex> lock(m_mutex);
     const auto is_not_full = [&] {
@@ -42,18 +57,6 @@ class BlockQueue {
     m_not_full_cv.notify_one();
     return item;
   }
-
-  uint32_t Size() {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    return m_queue.size();
-  }
-
-  uint32_t MaxSize() {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    return m_max_size;
-  }
-
-  void MaxSize(uint32_t max_size) { m_max_size = max_size; }
 };
 }  // namespace gaia
 
